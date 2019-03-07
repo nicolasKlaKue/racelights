@@ -1,28 +1,55 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="fullscreen d-flex justify-content-center align-items-center">
+    
+    <div v-if="!ack" class="">
+      <div class="">
+        <h1 class="title">Julius joviale Startübungen</h1>
+        <div class="card">
+          
+          <HowManyLights/>
+        </div>  
+        <div v-if="getNumberOfLights > 0" class="card">
+          <WhatTimes/>
+        </div>
+      </div>
+    </div>
+    <div v-else>
+      <Racelight/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HowManyLights from "./components/views/HowManyLights.vue";
+import WhatTimes from './components/views/WhatTimes.vue';
+import Racelight from './components/views/Racelight.vue';
+import { mapState, mapGetters } from 'vuex';
+//
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    HowManyLights, WhatTimes, Racelight
+  },
+  computed:{ 
+    ...mapState(['lights', 'ack']),
+    ...mapGetters(['getNumberOfLights'])
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.fullscreen {
+  height: 100vh;
+  background-color: #333;
+}
+.title{
+  color: white;
 }
 </style>
