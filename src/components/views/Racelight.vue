@@ -1,5 +1,5 @@
 <template>
-  <div class=" ">
+  <div class="">
     <div v-if="state === 'prestart'">
       <div class>
         <button v-on:click="start" class="btn btn-outline-danger btn-lg">Start</button>
@@ -7,7 +7,7 @@
     </div>
     <div v-if="state === 'running'">
       <div class="d-flex flex-row dyn-col">
-        <div v-for="(light, index) in lights" :key="light.key" class="d-flex flex-column ">
+        <div v-for="(light, index) in lights" :key="light.key" class="d-flex flex-column dyn-row">
           <div v-bind:class="{red: counter <= index, green: counter > index}" class="light red glass"></div>
           <div v-bind:class="{red: counter <= index, green: counter > index}" class="light red glass"></div>
         </div>
@@ -61,6 +61,12 @@ export default {
 };
 </script>
 <style>
+.dyn-col{
+
+}
+.dyn-row{
+
+}
 .light {
   width: 20vh;
   height: 20vh;
@@ -103,10 +109,14 @@ export default {
     rgba(255, 255, 255, 0.2)
   );
 }
-@media screen and (orientation: portrait) {
+@media screen and (max-width: 720px) {
     .dyn-col 
     { 
-        flex-direction: column;
+        flex-direction: column !important;
+
      }
+    .dyn-row{
+        flex-direction: row !important;
+    }
    }
 </style>
