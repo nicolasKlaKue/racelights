@@ -109,7 +109,9 @@ export default {
     rgba(255, 255, 255, 0.2)
   );
 }
-@media screen and (max-width: 720px) {
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) {
     .dyn-col 
     { 
         flex-direction: column !important;
@@ -117,6 +119,10 @@ export default {
      }
     .dyn-row{
         flex-direction: row !important;
+    }
+    .light {
+    width: 15vh;
+    height: 15vh;
     }
    }
 </style>

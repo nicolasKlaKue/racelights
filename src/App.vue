@@ -4,11 +4,11 @@
     <div v-if="!ack" class="">
       <div class="">
         <h1 class="title">Julius joviale Startübungen</h1>
-        <div class="card">
+        <div class="card black">
           
           <HowManyLights/>
         </div>  
-        <div v-if="getNumberOfLights > 0" class="card">
+        <div v-if="getNumberOfLights > 0" class="card black">
           <WhatTimes/>
         </div>
       </div>
@@ -51,5 +51,11 @@ export default {
 }
 .title{
   color: white;
+}
+.black{
+  background-color: black;
+}
+.dark-gray{
+    background-color: #333;
 }
 </style>

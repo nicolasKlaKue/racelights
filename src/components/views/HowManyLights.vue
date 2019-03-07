@@ -1,8 +1,8 @@
 <template>
 <div>  
-    <h3 class="card-title">Wie viele Lampen?</h3>
+    <h3 class="card-title title">Wie viele Lampen?</h3>
     <div class="form-inline card-body justify-content-center">
-        <input class="form-control" v-model="lightscount" type="text">
+        <input class="form-control dark-gray title" v-model="lightscount" type="text">
         <button class="btn btn-outline-primary" v-on:click="save">Save</button>
     </div>
     
