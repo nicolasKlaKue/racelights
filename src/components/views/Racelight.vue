@@ -8,8 +8,8 @@
     <div v-if="state === 'running'">
       <div class="d-flex flex-row dyn-col">
         <div v-for="(light, index) in lights" :key="light.key" class="d-flex flex-column dyn-row">
-          <div v-bind:class="{red: counter <= index, green: counter > index}" class="light red glass"></div>
-          <div v-bind:class="{red: counter <= index, green: counter > index}" class="light red glass"></div>
+          <div v-bind:class="{off: counter <= index, red: counter > index, green: greenlights}" class="light glass"></div>
+          <div v-bind:class="{off: counter <= index, red: counter > index, green: greenlights}" class="light glass"></div>
         </div>
       </div>
     </div>
@@ -30,17 +30,23 @@ export default {
     return {
       state: "prestart",
       counter: 0,
-      time: 0
+      time: 0,
+      greenlights: false
     };
   },
   methods: {
     reset: function() {
+      this.state = "prestart";
+      this.counter = 0;
+      this.time = 0;
+      this.greenlights = false;
       this.$store.commit("reset");
     },
     restart: function() {
       this.state = "prestart";
       this.counter = 0;
       this.time = 0;
+      this.greenlights = false;
     },
     start: function() {
       this.state = "running";
@@ -49,7 +55,11 @@ export default {
           setTimeout(() => {
                 this.counter++;
                 if(this.counter == this.lights.length){
-                    this.state = 'done';
+                  
+                    this.greenlights = true;
+                    setTimeout(() => {
+                      this.state = 'done';
+                    }, 3000)
                 }
             }, this.time * 1000)
       }
@@ -79,6 +89,10 @@ export default {
 .green {
   background-color: green; /*for compatibility with older browsers*/
   background-image: linear-gradient(green, lightgreen);
+}
+.off {
+  background-color: black; /*for compatibility with older browsers*/
+  background-image: linear-gradient(black, #222);
 }
 .fullscreen {
   height: 100vh;

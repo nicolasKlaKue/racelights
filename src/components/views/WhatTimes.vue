@@ -5,7 +5,7 @@
             <label class="title" for="val+light.id">Lampe {{index + 1}}.</label>
             <input v-model="light.time" class="form-control dark-gray title" type="" name="light.id" id="val+light.id">
         </div>
-        <button class="btn btn-success btn-lg btn-block" v-on:click="ack">Start</button>
+        <button class="btn btn-success btn-lg btn-block pacifico" v-on:click="ack">Start</button>
     </div>
 </template>
 <script>

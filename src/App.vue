@@ -3,7 +3,7 @@
     
     <div v-if="!ack" class="">
       <div class="">
-        <h1 class="title">Julius joviale Startübungen</h1>
+        <h1 class="title pacifico">Julius famose Startübungen</h1>
         <div class="card black">
           
           <HowManyLights/>
@@ -38,6 +38,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,6 +50,9 @@ export default {
 .fullscreen {
   height: 100vh;
   background-color: #333;
+}
+.pacifico{
+  font-family: 'Pacifico', cursive;
 }
 .title{
   color: white;
